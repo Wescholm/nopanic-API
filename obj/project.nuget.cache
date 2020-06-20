@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "0It/QY1aFjCLpUYwe5bwI2FKFo5iZ4d0dXR0+yuYxfJd3bDQKh3L20NfgV1tXlsIU1NiWnoTS0DDtObg9lU9lQ==",
+  "success": true,
+  "projectFilePath": "/Users/wescholm/Desktop/nopanic/nopanic-API/nopanic-API.csproj",
+  "expectedPackageFiles": [
+    "/Users/wescholm/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
