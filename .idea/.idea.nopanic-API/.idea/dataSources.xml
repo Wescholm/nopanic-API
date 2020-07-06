@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="nopanic-db" uuid="15e39a48-63f5-4596-b340-a3a74477d020">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://dev-db.c8ba21y7zgcw.eu-central-1.rds.amazonaws.com:1433;database=dev</jdbc-url>
+    </data-source>
+  </component>
+</project>
