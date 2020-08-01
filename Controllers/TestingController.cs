@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Entity;
+using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using nopanic_API.Models;
 using nopanic_API.Models.Context;
@@ -16,25 +13,16 @@ namespace nopanic_API.Controllers
         MainDbContext db = new MainDbContext();
 
         [HttpGet("Test")]
-        public List<Test> Get()
+        public object Get()
         {
-            var result = from v in db.Test 
-                where v.Action != "Test2"
-                select v;
-            return result.ToList();
+            var token = Guid.NewGuid().ToString();
+            return token;
         }
         
         [HttpPost("Test")]
-        public void Post()
+        public User Post([FromBody] User userData)
         {
-            var data = new Test
-            {
-               Action = "Added",
-               OperationTime = 999000
-            };
-
-            db.Add(data);
-            db.SaveChanges();
+            return userData;
         }
         
         [HttpPut("Test")]

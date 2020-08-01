@@ -5,7 +5,14 @@ namespace nopanic_API.Models.Context
     public class MainDbContext: DbContext
     {
         public DbSet<Test> Test { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<ProfileGradient> ProfileGradients { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured)
