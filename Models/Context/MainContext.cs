@@ -20,7 +20,10 @@ namespace nopanic_API.Models.Context
                 return;
             }
 
-            optionsBuilder.UseSqlServer("Server=dev-db.c8ba21y7zgcw.eu-central-1.rds.amazonaws.com; Database=dev; User Id=admin; Password=JwKg2xKFVK5D8EYE");
+            // optionsBuilder.UseSqlServer("Server=dev-db.c8ba21y7zgcw.eu-central-1.rds.amazonaws.com; Database=dev; User Id=admin; Password=JwKg2xKFVK5D8EYE");
+            // base.OnConfiguring(optionsBuilder);
+            
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=nopanic;Trusted_Connection=False;User=sa;Password=Qwerty123;");
             base.OnConfiguring(optionsBuilder);
         }
     }

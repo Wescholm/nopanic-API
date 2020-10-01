@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
 using nopanic_API.Models;
 
 namespace nopanic_API.Managers

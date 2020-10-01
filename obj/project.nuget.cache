@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "n9Df7Q9+rSKkjYJmaD1YImt3+Q9KqlxwT+qIzIcgcFCDDGapzNWVHWyAg4MoVOXQQKM7ou3aZsaVNKShjM6e0g==",
+  "dgSpecHash": "P/7EhBvzJeNKJVk1rTWMhpP8HpEAiOwSovJshmHANfWFVm7X4yg6cdGkRAyCNW2Xi0sdPS+DolJ1wpkW1xO4Xg==",
   "success": true,
   "projectFilePath": "/Users/wescholm/Desktop/nopanic/nopanic-API/nopanic-API.csproj",
   "expectedPackageFiles": [
     "/Users/wescholm/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
+    "/Users/wescholm/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.1.7/microsoft.aspnetcore.authentication.jwtbearer.3.1.7.nupkg.sha512",
     "/Users/wescholm/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/wescholm/.nuget/packages/microsoft.data.sqlclient/2.0.0-preview3.20122.2/microsoft.data.sqlclient.2.0.0-preview3.20122.2.nupkg.sha512",
     "/Users/wescholm/.nuget/packages/microsoft.entityframeworkcore/5.0.0-preview.6.20312.4/microsoft.entityframeworkcore.5.0.0-preview.6.20312.4.nupkg.sha512",
@@ -105,7 +106,19 @@
     "/Users/wescholm/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/wescholm/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/Users/wescholm/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "/Users/wescholm/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "/Users/wescholm/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "/Users/wescholm/.nuget/packages/telesign/2.2.2/telesign.2.2.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Telesign 2.2.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Telesign",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

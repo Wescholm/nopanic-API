@@ -2,7 +2,7 @@
 
 namespace nopanic_API.Migrations
 {
-    public partial class CreateProfileGradientsTable : Migration
+    public partial class InitLocalDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,6 +19,23 @@ namespace nopanic_API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProfileGradients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Test",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OperationTime = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    Action = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StatusCode = table.Column<int>(type: "int", nullable: false),
+                    Method = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Test", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,12 +66,14 @@ namespace nopanic_API.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_User_ProfileGradientId",
                 table: "User",
-                column: "ProfileGradientId",
-                unique: true);
+                column: "ProfileGradientId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Test");
+
             migrationBuilder.DropTable(
                 name: "User");
 

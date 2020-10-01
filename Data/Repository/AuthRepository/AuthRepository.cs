@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
 using nopanic_API.Managers;
 using nopanic_API.Models;
 using nopanic_API.Models.Context;
@@ -96,7 +95,8 @@ namespace nopanic_API.Data.Repository.AuthRepository
                 Email = user.Email,
                 Password = user.Password,
                 UserName =  user.UserName,
-                ProfileGradientId = rId
+                ProfileGradientId = rId,
+                Guid = Guid.NewGuid().ToString()
             };
 
             db.Add(newUser);
@@ -140,7 +140,9 @@ namespace nopanic_API.Data.Repository.AuthRepository
                 Claims = new Claim[]
                 {
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Name, user.UserName)
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim("mobile_phone", !String.IsNullOrEmpty(user.PhoneNumber) ? user.PhoneNumber : ""), 
+                    new Claim("user_guid", user.Guid)
                 }
             };
         }
