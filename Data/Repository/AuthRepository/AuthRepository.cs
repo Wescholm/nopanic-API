@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using nopanic_API.Data.Security;
 using nopanic_API.Managers;
 using nopanic_API.Models;
 using nopanic_API.Models.Context;
@@ -53,17 +55,27 @@ namespace nopanic_API.Data.Repository.AuthRepository
         
         public Dictionary<string, object> Login(User requestedUser)
         {
-            User user = db.User
-                .Include(v => v.ProfileGradient)
-                .FirstOrDefault(v => v.Email == requestedUser.Email && v.Password == requestedUser.Password);
+            var encryptionPass = ConfigurationManager.AppSettings["EncryptionPass"];
+            var encryptedPass = Encryption.Encrypt(requestedUser.Password, encryptionPass);
 
-            if (user == null)
+            User user;
+            if (requestedUser.Email.Contains('@'))
             {
                 user = db.User
                     .Include(v => v.ProfileGradient)
-                    .FirstOrDefault(v => v.UserName == requestedUser.Email && v.Password == requestedUser.Password);
+                    .FirstOrDefault(v => 
+                        v.Email == requestedUser.Email 
+                        && v.Password == encryptedPass);
             }
-            
+            else
+            {
+                user = db.User
+                    .Include(v => v.ProfileGradient)
+                    .FirstOrDefault(v => 
+                        v.UserName == requestedUser.Email 
+                        && v.Password == encryptedPass);
+            }
+
             if (user == null) return null;
 
             var jwt = GenerateJwtToken(user);
@@ -89,11 +101,15 @@ namespace nopanic_API.Data.Repository.AuthRepository
             var r = new Random();
             var pg = db.ProfileGradients;
             var rId = r.Next(pg.Min(v => v.Id), pg.Max(v => v.Id));
+
+            var encryptedPass = Encryption.Encrypt(
+                user.Password,
+                ConfigurationManager.AppSettings["EncryptionPass"]);
             
             var newUser = new User
             {
                 Email = user.Email,
-                Password = user.Password,
+                Password = encryptedPass,
                 UserName =  user.UserName,
                 ProfileGradientId = rId,
                 Guid = Guid.NewGuid().ToString()

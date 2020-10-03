@@ -1,11 +1,13 @@
+using System.Configuration;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using nopanic_API.Data.Security;
 using nopanic_API.Models.Context;
 
 namespace nopanic_API.Controllers
 {
-    [Authorize(Policy = "MainPolicy")]
+    // [Authorize(Policy = "MainPolicy")]
     [Route("API/[controller]")]
     [ApiController]
     public class TestingController: Controller
@@ -13,10 +15,9 @@ namespace nopanic_API.Controllers
         MainDbContext db = new MainDbContext();
 
         [HttpGet("Test")]
-        public int Get()
+        public object Get([FromQuery] string msg)
         {
-
-            return 1 + 1;
+            return Encryption.Encrypt(msg, "HzGLd8Yr!Jfpa7mA");
         }
         
         [HttpPost("Test")]
