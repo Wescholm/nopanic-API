@@ -5,14 +5,14 @@ using nopanic_API.Models;
 using nopanic_API.Models.Context;
 using Telesign;
 
-namespace nopanic_API.Data.Repository.UsersRepository
+namespace nopanic_API.Data.Repository.AccountRepository
 {
-    public class UsersRepository: IUsersRepository
+    public class AccountRepository: IAccountRepository
     {
         MainDbContext db = new MainDbContext();
         private readonly IConfiguration _config;
 
-        public UsersRepository(IConfiguration config)
+        public AccountRepository(IConfiguration config)
         {
             _config = config;
         }

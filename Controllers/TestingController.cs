@@ -17,7 +17,7 @@ namespace nopanic_API.Controllers
         [HttpGet("Test")]
         public object Get([FromQuery] string msg)
         {
-            return Encryption.Encrypt(msg, "HzGLd8Yr!Jfpa7mA");
+            return Encryption.Encrypt(msg, "1");
         }
         
         [HttpPost("Test")]

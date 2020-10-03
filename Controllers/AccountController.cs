@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using nopanic_API.Data.Repository.UsersRepository;
+using nopanic_API.Data.Repository.AccountRepository;
 using nopanic_API.Models;
 using nopanic_API.Models.Context;
 
@@ -8,12 +8,12 @@ namespace nopanic_API.Controllers
 {
     [Route("API/[controller]")]
     [ApiController]
-    public class UsersController : Controller
+    public class AccountController : Controller
     {
-        private IUsersRepository _repository;
-        public UsersController(IConfiguration config)
+        private IAccountRepository _repository;
+        public AccountController(IConfiguration config)
         {
-            _repository = new UsersRepository(config);
+            _repository = new AccountRepository(config);
         }
         
         [HttpPost("AddUserPhoneNumber")]
@@ -25,7 +25,7 @@ namespace nopanic_API.Controllers
         }
         
         [HttpPost("VerifyUserPhoneNumber")]
-        public IActionResult CheckUserAvailability([FromBody] VerificationData data)
+        public IActionResult VerifyUserPhoneNumber([FromBody] VerificationData data)
         {
             VerificationData verificationData = _repository.VerifyUserPhoneNumber(data.phoneNumber);
             if (verificationData.verificationCode != null)
