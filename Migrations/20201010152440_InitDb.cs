@@ -2,7 +2,7 @@
 
 namespace nopanic_API.Migrations
 {
-    public partial class InitLocalDb : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,12 +44,13 @@ namespace nopanic_API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Guid = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: true),
                     ProfileGradientId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
