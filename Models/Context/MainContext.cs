@@ -13,6 +13,7 @@ namespace nopanic_API.Models.Context
 
         }
         
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder.IsConfigured)

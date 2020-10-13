@@ -37,6 +37,10 @@
           "target": "Package",
           "version": "[3.1.7, )"
         },
+        "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+          "target": "Package",
+          "version": "[3.1.8, )"
+        },
         "Microsoft.EntityFrameworkCore": {
           "target": "Package",
           "version": "[5.0.0-preview.6.20312.4, )"
@@ -68,6 +72,10 @@
         "System.IdentityModel.Tokens.Jwt": {
           "target": "Package",
           "version": "[6.7.1, )"
+        },
+        "System.Text.Json": {
+          "target": "Package",
+          "version": "[5.0.0-rc.1.20451.14, )"
         },
         "Telesign": {
           "target": "Package",

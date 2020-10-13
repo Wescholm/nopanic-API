@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using nopanic_API.Data.Repository.AuthRepository;
+using nopanic_API.Data.Repository.AWSAuthRepository;
 using nopanic_API.Models;
 
 namespace nopanic_API.Controllers
@@ -12,7 +14,17 @@ namespace nopanic_API.Controllers
     public class AuthorizationController : Controller
     {
         private IAuthRepository _repository = new AuthRepository();
+        private IAWSAuthRepository _AWS_repository = new AWSAuthRepository();
 
+        [HttpGet("GetAuthorizationHeader")]
+        public object GenerateAuthorizationHeader()
+        {
+            var header = _AWS_repository
+                .GenerateAuthorizationHeader("img.nopanic", "file_name.png", HttpMethod.Get);
+            return header;
+        }
+
+        
         [HttpGet("GetUserAvailability")]
         public IActionResult CheckUserAvailability([FromQuery] string data, string type)
         {
